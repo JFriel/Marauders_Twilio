@@ -66,7 +66,7 @@ def space(inpt,person):
         print("FIND")
         return random.choice(allMachines)
         #find a computer close by
-    return "CEILING CAT"
+    return "NONE becuase you can't send a text correctly"
 
 
 print space("avoid","Angus Pearson")
