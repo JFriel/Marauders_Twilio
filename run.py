@@ -9,25 +9,25 @@ app = Flask(__name__)
 
 # Try adding your own number to this list!
 
-#dh_machines = flask_redis.lrange("drillhall-machines", 0, -1)
-#machines = {m: flask_redis.hgetall(m) for m in dh_machines}
-#num_rows = max([int(machines[m]['row']) for m in machines])
-#num_cols = max([int(machines[m]['col']) for m in machines])
-#people_in_labs = [v['user'] for (k, v) in machines.iteritems() if "user" in v]
+dh_machines = flask_redis.lrange("drillhall-machines", 0, -1)
+machines = {m: flask_redis.hgetall(m) for m in dh_machines}
+num_rows = max([int(machines[m]['row']) for m in machines])
+num_cols = max([int(machines[m]['col']) for m in machines])
+people_in_labs = [v['user'] for (k, v) in machines.iteritems() if "user" in v]
 
 rows = []
-#for r in xrange(0, num_rows+1):
-#    unsorted_cells = []
-#    for c in xrange(0, num_cols+1):
-#        default_cell = {'hostname': None, 'col': c, 'row': r}
-#        cell = [v for (k, v) in machines.iteritems() if int(v['row']) == r and int(v['col']) == c]
-#        if not cell:
- #           cell = default_cell
- ##       else:
- #           cell = cell[0]
- #       unsorted_cells.append(cell)
- #   cells = unsorted_cells
- #   rows.append(cells)
+for r in xrange(0, num_rows+1):
+    unsorted_cells = []
+    for c in xrange(0, num_cols+1):
+        default_cell = {'hostname': None, 'col': c, 'row': r}
+       cell = [v for (k, v) in machines.iteritems() if int(v['row']) == r and int(v['col']) == c]
+       if not cell:
+           cell = default_cell
+       else:
+           cell = cell[0]
+       unsorted_cells.append(cell)
+   cells = unsorted_cells
+   rows.append(cells)
 allMachines =['venosa', 'trento', 'pavia', 'orlofsky', 'mereb', 'radames', 'vervecelli', 'ascoli', 'tivoli', 'wideopen', 'twite', 'swanland', 'enna', 'gosforth', 'albenga', 'hart', 'stork', 'brujon', 'pharoah', 'combeferre', 'remendado', 'escamillo', 'micaela', 'lavello', 'marsala', 'mantua', 'spoleto', 'falconara', 'amelia', 'parrot', 'wigton', 'falcon', 'raven', 'ciociosan', 'lilas', 'roxanne', 'yakuside', 'lesgles', 'goro', 'daae', 'owl', 'owl', 'penguin', 'lodi', 'luni', 'palermo', 'falke', 'scarpia', 'cavaradossi', 'amneris', 'babet', 'amanasro', 'ceilingcat', 'danicaire', 'lowick', 'seascale', 'ostiglia', 'allonby', 'yvan', 'claquesous', 'montparnarsse', 'tosca', 'spoletta', 'enjolras', 'nehebka', 'parma', 'carmen', 'messina', 'rosilande', 'gabriel', 'aida', 'frosch', 'thenardier', 'zoser', 'pollenzo', 'palestrina', 'ravenna', 'bechstein', 'mocha', 'bluthner', 'dove', 'scarecrow', 'giry', 'savona', 'vicenza', 'velma', 'avellino', 'morales', 'pontremoli', 'velletri', 'angelotti', 'joly', 'courfeyrac', 'crow', 'giudicelli', 'pipit']
 
 callers = {
